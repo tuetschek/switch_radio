@@ -1,0 +1,149 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "switch radio",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "Tune",
+                    "slots": [
+                        {
+                            "name": "station",
+                            "type": "RadioStation"
+                        }
+                    ],
+                    "samples": [
+                        "change station to {station}",
+                        "play {station}",
+                        "tune in to {station}",
+                        "change channel to {station}",
+                        "tune to {station}",
+                        "change to {station}",
+                        "switch to {station}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.PauseIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ResumeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "WhichStation",
+                    "slots": [],
+                    "samples": [
+                        "what station",
+                        "what station is playing",
+                        "which station",
+                        "which station is playing"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "RadioStation",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "beat",
+                                "synonyms": [
+                                    "radio beat"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "NDR culture",
+                                "synonyms": [
+                                    "german culture"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "czech radio one",
+                                "synonyms": [
+                                    "czech radio 1",
+                                    "check radio 1",
+                                    "check radio",
+                                    "czech radio",
+                                    "czech one",
+                                    "radio journal"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "BBC two",
+                                "synonyms": [
+                                    "BBC radio two",
+                                    "BBC 2",
+                                    "BBC radio 2"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "BBC one",
+                                "synonyms": [
+                                    "BBC radio one",
+                                    "BBC radio 1",
+                                    "BBC 1"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "Tune",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "station",
+                            "type": "RadioStation",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1420381464096.606183354504"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1420381464096.606183354504",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What station would you like?"
+                    }
+                ]
+            }
+        ]
+    }
+}
