@@ -3,12 +3,14 @@ import os
 import sqlite3
 
 from flask import Flask, json
-from flask_ask import Ask, request, session, question, statement, audio, current_stream
+from flask_ask import Ask, session, statement, audio, current_stream
 
 app = Flask(__name__)
 ask = Ask(app, "/")
-logger = logging.getLogger()
+logger = logging.getLogger('flask_ask')
 logging.getLogger('flask_ask').setLevel(logging.INFO)
+
+DB_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'switch_radio.sqlite')
 
 STREAMS = {
     'czech radio one': 'https://api.play.cz/radio/cro1-128.mp3.m3u',
@@ -17,19 +19,24 @@ STREAMS = {
     'BBC one': 'https://www.listenlive.eu/bbcradio1.m3u',
     'BBC two': 'https://www.listenlive.eu/bbcradio2.m3u',
 }
-DB_FILE = 'switch_radio.sqlite'
+DEFAULT_STATION = list(STREAMS.keys())[0]
 
 
 @ask.launch
 def launch():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute('SELECT * FROM stations WHERE uid = ?', session.user.userId)
+    c.execute('SELECT * FROM stations WHERE uid = ?', (session.user.userId, ))
     station = c.fetchall()
-    station = station[0][1] if station else 'czech radio one'
-    c.execute('')  # TODO update
+    if not station:
+        station = DEFAULT_STATION
+        logger.info('INS uid = %s station = %s' % (session.user.userId, station))
+        c.execute('INSERT INTO stations(uid, station) VALUES (?, ?)', (session.user.userId, station))
+        db.commit()
+    else:
+        station = station[0][1]
     db.close()
-    return audio().play(STREAMS['czech radio one'])
+    return audio().play(STREAMS[station])
 
 
 @ask.intent('Tune', mapping={'station': 'station'})
@@ -37,6 +44,12 @@ def tune(station):
     if station not in STREAMS:
         return statement('I\'m sorry, I don\'t know the station "%s"' % station)
 
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    logger.info('UPD uid = %s station = %s' % (session.user.userId, station))
+    c.execute('UPDATE stations SET station = ? WHERE uid = ?', (station, session.user.userId))
+    db.commit()
+    db.close()
     return audio().play(STREAMS[station])
 
 
@@ -49,10 +62,10 @@ def pause():
 def resume():
     return audio().resume()
 
+
 @ask.intent('AMAZON.StopIntent')
 def stop():
     return audio().clear_queue(stop=True)
-
 
 
 # optional callbacks
@@ -74,13 +87,16 @@ def stopped(offset, token):
 def nearly_finished():
     _infodump('Stream nearly finished from {}'.format(current_stream.url))
 
+
 @ask.on_playback_finished()
 def stream_finished(token):
     _infodump('Playback has finished for stream with token {}'.format(token))
 
+
 @ask.session_ended
 def session_ended():
     return "{}", 200
+
 
 def _infodump(obj, indent=2):
     msg = json.dumps(obj, indent=indent)
@@ -95,9 +111,4 @@ if __name__ == '__main__':
         c.execute('CREATE TABLE stations (uid varchar(256), station varchar(256))')
         db.commit()
         db.close()
-    if 'ASK_VERIFY_REQUESTS' in os.environ:
-        verify = str(os.environ.get('ASK_VERIFY_REQUESTS', '')).lower()
-        if verify == 'false':
-            app.config['ASK_VERIFY_REQUESTS'] = False
     app.run(debug=True)
-
