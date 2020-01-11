@@ -28,6 +28,10 @@
                         }
                     ],
                     "samples": [
+                        "on {station}",
+                        "for {station}",
+                        "{station}",
+                        "to {station}",
                         "change station to {station}",
                         "play {station}",
                         "tune in to {station}",
@@ -62,6 +66,53 @@
                     "values": [
                         {
                             "name": {
+                                "value": "czech radio three",
+                                "synonyms": [
+                                    "czech classical",
+                                    "check classical",
+                                    "check 3",
+                                    "check three",
+                                    "czech three",
+                                    "C R O three",
+                                    "C R O 3"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "czech radio two",
+                                "synonyms": [
+                                    "C R O prague",
+                                    "C R O 2",
+                                    "check radio prague",
+                                    "check prague",
+                                    "czech radio prague",
+                                    "czech prague ",
+                                    "radio prague",
+                                    "prague",
+                                    "check radio 2",
+                                    "check radio two",
+                                    "check 2",
+                                    "czech 2",
+                                    "check two",
+                                    "czech two"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "czech radio plus",
+                                "synonyms": [
+                                    "C R O plus",
+                                    "check radio plus",
+                                    "check plus",
+                                    "plus",
+                                    "czech plus"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "beat",
                                 "synonyms": [
                                     "radio beat"
@@ -80,6 +131,8 @@
                             "name": {
                                 "value": "czech radio one",
                                 "synonyms": [
+                                    "C R O one",
+                                    "C R O 1",
                                     "czech radio 1",
                                     "check radio 1",
                                     "check radio",

@@ -14,10 +14,13 @@ DB_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'switch_radio
 
 STREAMS = {
     'czech radio one': 'https://api.play.cz/radio/cro1-128.mp3.m3u',
+    'czech radio two': 'https://api.play.cz/radio/cro2-128.mp3.m3u',
+    'czech radio three': 'https://api.play.cz/radio/cro3-128.mp3.m3u',
+    'czech radio plus': 'https://api.play.cz/radio/croplus128.mp3.m3u',
     'NDR culture': 'https://www.ndr.de/resources/metadaten/audio/m3u/ndrkultur.m3u',
     'beat': 'https://api.play.cz/radio/beat128.mp3.m3u',
-    'BBC one': 'https://www.listenlive.eu/bbcradio1.m3u',
-    'BBC two': 'https://www.listenlive.eu/bbcradio2.m3u',
+    'BBC one': 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p.m3u',
+    'BBC two': 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p.m3u',
 }
 DEFAULT_STATION = list(STREAMS.keys())[0]
 
