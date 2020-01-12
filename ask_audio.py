@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import logging
 import os
 import sqlite3
@@ -6,9 +8,10 @@ from flask import Flask, json
 from flask_ask import Ask, session, statement, audio, current_stream
 
 app = Flask(__name__)
+app.config['ASK_VERIFY_REQUESTS'] = False
 ask = Ask(app, "/")
 logger = logging.getLogger('flask_ask')
-logging.getLogger('flask_ask').setLevel(logging.INFO)
+logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 DB_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'switch_radio.sqlite')
 
@@ -114,4 +117,4 @@ if __name__ == '__main__':
         c.execute('CREATE TABLE stations (uid varchar(256), station varchar(256))')
         db.commit()
         db.close()
-    app.run(debug=True)
+    app.run(ssl_context=('certificate.crt', 'private.key'), port=4443, host='0.0.0.0')
