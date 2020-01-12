@@ -9,7 +9,7 @@ from flask_ask import Ask, session, statement, audio, current_stream
 
 app = Flask(__name__)
 app.config['ASK_VERIFY_REQUESTS'] = False
-ask = Ask(app, "/")
+ask = Ask(app, "/switch_radio")
 logger = logging.getLogger('flask_ask')
 logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
@@ -117,4 +117,4 @@ if __name__ == '__main__':
         c.execute('CREATE TABLE stations (uid varchar(256), station varchar(256))')
         db.commit()
         db.close()
-    app.run(ssl_context=('certificate.crt', 'private.key'), port=4443, host='0.0.0.0')
+    app.run()#ssl_context=('certificate.crt', 'private.key'), port=4443, host='0.0.0.0')
