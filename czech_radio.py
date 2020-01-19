@@ -10,7 +10,7 @@ from flask_ask import Ask, session, statement, audio, current_stream
 app = Flask(__name__)
 ask = Ask(app, "/czech_radio")
 logger = logging.getLogger('flask_ask')
-logging.getLogger('flask_ask').setLevel(logging.DEBUG)
+logging.getLogger('flask_ask').setLevel(logging.WARN)
 
 
 STREAM = 'https://api.play.cz/radio/cro1-128.mp3.m3u'
