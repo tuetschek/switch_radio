@@ -66,6 +66,18 @@
                     "values": [
                         {
                             "name": {
+                                "value": "czech radio wave",
+                                "synonyms": [
+                                    "C R O wave",
+                                    "radio wave",
+                                    "wave",
+                                    "czech wave",
+                                    "check wave"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "czech radio three",
                                 "synonyms": [
                                     "czech classical",
@@ -82,6 +94,7 @@
                             "name": {
                                 "value": "czech radio two",
                                 "synonyms": [
+                                    "check too",
                                     "C R O prague",
                                     "C R O 2",
                                     "check radio prague",
@@ -131,6 +144,8 @@
                             "name": {
                                 "value": "czech radio one",
                                 "synonyms": [
+                                    "check 1",
+                                    "check one",
                                     "C R O one",
                                     "C R O 1",
                                     "czech radio 1",
@@ -146,6 +161,10 @@
                             "name": {
                                 "value": "BBC two",
                                 "synonyms": [
+                                    "b b c radio too",
+                                    "bbc too",
+                                    "b b c radio 2",
+                                    "b b c 2",
                                     "BBC radio two",
                                     "BBC 2",
                                     "BBC radio 2"
@@ -156,6 +175,8 @@
                             "name": {
                                 "value": "BBC one",
                                 "synonyms": [
+                                    "b b c radio 1",
+                                    "b b c 1",
                                     "BBC radio one",
                                     "BBC radio 1",
                                     "BBC 1"
