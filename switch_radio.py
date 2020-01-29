@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['ASK_VERIFY_REQUESTS'] = False
 ask = Ask(app, "/switch_radio")
 logger = logging.getLogger('flask_ask')
-logging.getLogger('flask_ask').setLevel(logging.DEBUG)
+logging.getLogger('flask_ask').setLevel(logging.WARN)
 
 DB_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'switch_radio.sqlite')
 
