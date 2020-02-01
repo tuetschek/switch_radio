@@ -66,6 +66,60 @@
                     "values": [
                         {
                             "name": {
+                                "value": "czech radio jazz",
+                                "synonyms": [
+                                    "C R O jazz",
+                                    "check radio jazz",
+                                    "radio jazz",
+                                    "czech jazz",
+                                    "check jazz"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "czech radio junior",
+                                "synonyms": [
+                                    "C R O junior",
+                                    "junior",
+                                    "radio junior",
+                                    "czech junior",
+                                    "check junior",
+                                    "check radio junior"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "NPO Radio 1",
+                                "synonyms": [
+                                    "n p o 1",
+                                    "netherlands 1",
+                                    "dutch 1",
+                                    "dutch one",
+                                    "NPO one",
+                                    "NPO 1"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "NPO 3FM",
+                                "synonyms": [
+                                    "netherlands 3",
+                                    "n p o 3 f m",
+                                    "NPO three FM",
+                                    "n p o three",
+                                    "n p o 3",
+                                    "NPO 3",
+                                    "NPO three",
+                                    "dutch 3",
+                                    "dutch three"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "czech radio wave",
                                 "synonyms": [
                                     "C R O wave",
