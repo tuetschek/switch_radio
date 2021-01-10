@@ -53,6 +53,10 @@
                     "name": "WhichStation",
                     "slots": [],
                     "samples": [
+                        "what is playing",
+                        "what's playing",
+                        "which radio is playing",
+                        "what radio is playing",
                         "what station",
                         "what station is playing",
                         "which station",
@@ -122,6 +126,8 @@
                             "name": {
                                 "value": "czech radio wave",
                                 "synonyms": [
+                                    "weyv",
+                                    "radio weyv",
                                     "C R O wave",
                                     "radio wave",
                                     "wave",
@@ -190,6 +196,7 @@
                             "name": {
                                 "value": "NDR culture",
                                 "synonyms": [
+                                    "chairman culture",
                                     "german culture"
                                 ]
                             }
