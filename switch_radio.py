@@ -64,6 +64,17 @@ def tune(station):
     return audio().play(STREAMS[station])
 
 
+@ask.intent('WhichStation')
+def which_station(station):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute('SELECT * FROM stations WHERE uid = ?', (session.user.userId, ))
+    station = c.fetchall()
+    if station:
+        return statement(f'The current station is {station[0][1]}.')
+    return statement('No station set for this user.')
+
+
 @ask.intent('AMAZON.PauseIntent')
 def pause():
     return audio().stop()
